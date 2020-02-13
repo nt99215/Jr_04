@@ -1,0 +1,140 @@
+{"frames": {
+
+"black-bg.png":
+{
+	"frame": {"x":663,"y":1,"w":121,"h":121},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":121,"h":121},
+	"sourceSize": {"w":121,"h":121}
+},
+"btn_Back_default":
+{
+	"frame": {"x":284,"y":131,"w":102,"h":114},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":5,"w":102,"h":114},
+	"sourceSize": {"w":110,"h":124}
+},
+"btn_Back_over":
+{
+	"frame": {"x":786,"y":1,"w":110,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":110,"h":124},
+	"sourceSize": {"w":110,"h":124}
+},
+"btn_close_default":
+{
+	"frame": {"x":822,"y":127,"w":101,"h":114},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":5,"w":101,"h":114},
+	"sourceSize": {"w":109,"h":124}
+},
+"btn_close_over":
+{
+	"frame": {"x":503,"y":117,"w":109,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":109,"h":124},
+	"sourceSize": {"w":109,"h":124}
+},
+"btn_soundoff_default":
+{
+	"frame": {"x":614,"y":124,"w":102,"h":114},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":5,"w":102,"h":114},
+	"sourceSize": {"w":110,"h":124}
+},
+"btn_soundoff_over":
+{
+	"frame": {"x":898,"y":1,"w":110,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":110,"h":124},
+	"sourceSize": {"w":110,"h":124}
+},
+"btn_soundon_default":
+{
+	"frame": {"x":718,"y":127,"w":102,"h":114},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":5,"w":102,"h":114},
+	"sourceSize": {"w":110,"h":124}
+},
+"btn_soundon_over":
+{
+	"frame": {"x":391,"y":117,"w":110,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":110,"h":124},
+	"sourceSize": {"w":110,"h":124}
+},
+"btn_tutorial_default":
+{
+	"frame": {"x":1020,"y":96,"w":77,"h":87},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":3,"w":77,"h":87},
+	"sourceSize": {"w":82,"h":93}
+},
+"btn_tutorial_over":
+{
+	"frame": {"x":1010,"y":1,"w":82,"h":93},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":82,"h":93},
+	"sourceSize": {"w":82,"h":93}
+},
+"closeToMain-button":
+{
+	"frame": {"x":925,"y":127,"w":93,"h":103},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":93,"h":103},
+	"sourceSize": {"w":93,"h":103}
+},
+"game-popup-bg":
+{
+	"frame": {"x":614,"y":117,"w":2,"h":2},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":2,"h":2},
+	"sourceSize": {"w":2,"h":2}
+},
+"retry-button-over.png":
+{
+	"frame": {"x":1,"y":131,"w":281,"h":116},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":281,"h":116},
+	"sourceSize": {"w":281,"h":116}
+},
+"retry-button.png":
+{
+	"frame": {"x":391,"y":1,"w":270,"h":114},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":1,"w":270,"h":114},
+	"sourceSize": {"w":281,"h":116}
+},
+"start-button.png":
+{
+	"frame": {"x":1,"y":1,"w":388,"h":128},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":388,"h":128},
+	"sourceSize": {"w":388,"h":128}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "game-main-button",
+	"format": "RGBA8888",
+	"size": {"w":1098,"h":248},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:81ef29c90aa0183eba38e507849abdef:e7815dd25e90a00e18df3859f36d5dd9:9e2c503b58c39c98116ccd3047c51380$"
+}
+}
