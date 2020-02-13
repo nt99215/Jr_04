@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 15);
+/******/ 	return __webpack_require__(__webpack_require__.s = 16);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -85,6 +85,7 @@ let maxVisibleCharacter = 6;
 // let bestTime = 90;
 let bestTime = 90;
 let resultTime = 0;
+// let goalScore = 100;
 let goalScore = 100;
 let objectScale = 0.85;
 let shakeEnabled = true; //camera shake
@@ -1299,8 +1300,8 @@ class MouseEffect {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__data_GameConfig__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__manager_SoundManager__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__data_SoundAssetKey__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ui_BackgroundEffect_js__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__manager_ConfigManager__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ui_BackgroundEffect_js__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__manager_ConfigManager__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__object_TextView__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__util_WebEnabledCheck__ = __webpack_require__(11);
 
@@ -1664,6 +1665,41 @@ class WebEnabledCheck {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__data_GameConfig__ = __webpack_require__(0);
+
+
+class ConfigManager {
+    /**
+     * CONFIG RESET
+     *
+     */
+    GAME_CONFIG_RESET() {
+        __WEBPACK_IMPORTED_MODULE_0__data_GameConfig__["a" /* default */].POP_ENABLED = false;
+        // GameConfig.SOUND_ENABLED = true;
+        __WEBPACK_IMPORTED_MODULE_0__data_GameConfig__["a" /* default */].BGM_ENABLED = true;
+        __WEBPACK_IMPORTED_MODULE_0__data_GameConfig__["a" /* default */].IN_GAME = true;
+        __WEBPACK_IMPORTED_MODULE_0__data_GameConfig__["a" /* default */].TUTORIAL_DISABLED = false;
+        __WEBPACK_IMPORTED_MODULE_0__data_GameConfig__["a" /* default */].GAME_FINISH = false;
+        __WEBPACK_IMPORTED_MODULE_0__data_GameConfig__["a" /* default */].IN_GAME = true;
+        if (__WEBPACK_IMPORTED_MODULE_0__data_GameConfig__["a" /* default */].TIMER_OBJECT.length !== 0) {
+            // GameConfig.TIMER_OBJECT.removeChildren(0, GameConfig.TIMER_OBJECT.length);
+        }
+    }
+
+    GAME_OVER() {
+        __WEBPACK_IMPORTED_MODULE_0__data_GameConfig__["a" /* default */].IN_GAME = false;
+        __WEBPACK_IMPORTED_MODULE_0__data_GameConfig__["a" /* default */].GAME_RESET = true;
+    }
+
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = ConfigManager;
+
+
+/***/ }),
+/* 13 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 
 class LoadManager {
     constructor(game) {
@@ -1704,7 +1740,7 @@ class LoadManager {
 LoadManager.instance = null;
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1763,7 +1799,7 @@ class SceneManager {
 
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1872,17 +1908,17 @@ class Constant {
 
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__loader_state_Boot__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__loader_state_Preloader__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__loader_state_Boot__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__loader_state_Preloader__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__loader_state_Main__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__loader_const_GameInfo__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__manager_SoundManager__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__loader_manager_LoadManager__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__loader_manager_LoadManager__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__loader_manager_ScreenManager__ = __webpack_require__(4);
 
 
@@ -1926,19 +1962,20 @@ class index extends Phaser.Game {
 
 
 window.nts = {};
-window.nts.index = new index('main_doc', 1280, 720);
+// window.nts.index = new index('main_doc', 1280, 720);
+window.nts.index = new index('main_doc', 720, 1280);
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__const_ResourceKey__ = __webpack_require__(5);
 
 
-window.PIXI = __webpack_require__(17);
-window.p2 = __webpack_require__(18);
-window.Phaser = __webpack_require__(19);
+window.PIXI = __webpack_require__(18);
+window.p2 = __webpack_require__(19);
+window.Phaser = __webpack_require__(20);
 
 class Boot extends Phaser.State {
     init(...args) {
@@ -1988,7 +2025,7 @@ class Boot extends Phaser.State {
 
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -9805,7 +9842,7 @@ PIXI.TextureUvs = function ()
 }).call(this);
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var require;var require;/**
@@ -24638,7 +24675,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
 
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(process) {/**
@@ -115302,10 +115339,10 @@ PIXI.canUseNewCanvasBlendModes = function ()
 * "What matters in this life is not what we do but what we do for others, the legacy we leave and the imprint we make." - Eric Meyer
 */
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(21)))
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -115495,13 +115532,13 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__const_ResourceKey__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__const_GameInfo__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__const_PreloadData__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__const_PreloadData__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__view_Intro__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__view_ResultView__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__data_GameConfig__ = __webpack_require__(0);
@@ -115537,23 +115574,36 @@ class Preloader extends Phaser.State {
         this.bg.y = __WEBPACK_IMPORTED_MODULE_1__const_GameInfo__["a" /* default */].GAME_HEIGHT / 2 - this.bg.height / 2;
 
         //ROW
-        this.loadingCircle = this.game.add.image(490, 210, __WEBPACK_IMPORTED_MODULE_0__const_ResourceKey__["a" /* default */].PRELOAD_RESOURCE, 'loading_circle');
-        this.preloadBar = this.game.add.sprite(557, 415, __WEBPACK_IMPORTED_MODULE_0__const_ResourceKey__["a" /* default */].PRELOAD_RESOURCE, 'loading_bar');
-        this.game.load.setPreloadSprite(this.preloadBar);
+        /*  this.loadingCircle = this.game.add.image(490, 210, ResourceKey.PRELOAD_RESOURCE, 'loading_circle');
+          this.preloadBar = this.game.add.sprite(557, 415, ResourceKey.PRELOAD_RESOURCE, 'loading_bar');
+          this.game.load.setPreloadSprite(this.preloadBar);
+            this.loadingJuni = this.game.add.sprite(557, 243, ResourceKey.PRELOAD_RESOURCE, 'loading_juni_piyo_01');
+          // this.loadingJuni.x = (GameInfo.GAME_WIDTH - this.loadingJuni.width)  >> 1;
+          this.loadingJuni.x = GameInfo.GAME_WIDTH/2 - this.loadingJuni.width/2;
+            //ERROR IMAGE
+          this.fileErrorImg = this.game.add.image(490, 186, ResourceKey.PRELOAD_RESOURCE, 'reloding_juni');
+          this.networkErrorImg = this.game.add.image(490, 186, ResourceKey.PRELOAD_RESOURCE, 'network_juni');*/
 
-        this.loadingJuni = this.game.add.sprite(557, 243, __WEBPACK_IMPORTED_MODULE_0__const_ResourceKey__["a" /* default */].PRELOAD_RESOURCE, 'loading_juni_piyo_01');
-        // this.loadingJuni.x = (GameInfo.GAME_WIDTH - this.loadingJuni.width)  >> 1;
+        //COLUMN
+        this.loadingCircle = this.game.add.image(490 - 280, 490, __WEBPACK_IMPORTED_MODULE_0__const_ResourceKey__["a" /* default */].PRELOAD_RESOURCE, 'loading_circle');
+        this.preloadBar = this.game.add.sprite(557 - 280, 490 + 205, __WEBPACK_IMPORTED_MODULE_0__const_ResourceKey__["a" /* default */].PRELOAD_RESOURCE, 'loading_bar');
+        this.game.load.setPreloadSprite(this.preloadBar);
+        this.loadingJuni = this.game.add.sprite(557 - 280, 490 + 33, __WEBPACK_IMPORTED_MODULE_0__const_ResourceKey__["a" /* default */].PRELOAD_RESOURCE, 'loading_juni_piyo_01');
+        // this.loadingJuni.x = (gameInfo.designWidth -this.loadingJuni.width)  >> 1;
         this.loadingJuni.x = __WEBPACK_IMPORTED_MODULE_1__const_GameInfo__["a" /* default */].GAME_WIDTH / 2 - this.loadingJuni.width / 2;
 
         //ERROR IMAGE
-        this.fileErrorImg = this.game.add.image(490, 186, __WEBPACK_IMPORTED_MODULE_0__const_ResourceKey__["a" /* default */].PRELOAD_RESOURCE, 'reloding_juni');
-        this.networkErrorImg = this.game.add.image(490, 186, __WEBPACK_IMPORTED_MODULE_0__const_ResourceKey__["a" /* default */].PRELOAD_RESOURCE, 'network_juni');
+        this.fileErrorImg = this.game.add.image(490 - 280, 490, __WEBPACK_IMPORTED_MODULE_0__const_ResourceKey__["a" /* default */].PRELOAD_RESOURCE, 'reloding_juni');
+        this.networkErrorImg = this.game.add.image(490 - 280, 490, __WEBPACK_IMPORTED_MODULE_0__const_ResourceKey__["a" /* default */].PRELOAD_RESOURCE, 'network_juni');
+
+        //ANI & ERROR IMAGE
         this.fileErrorImg.visible = false;
         this.networkErrorImg.visible = false;
 
         this.loadingJuni.animations.add('loadingJuni', ["loading_juni_piyo_01", "loading_juni_piyo_02", "loading_juni_piyo_03", "loading_juni_piyo_02"], 7, true);
         this.loadingJuni.animations.play('loadingJuni');
 
+        //RELOAD BUTTON
         // this.reloadBtn = this.game.add.button(562, 410, ResourceKey.PRELOAD_RESOURCE, this._reload.bind(this), this, "reloding_btn_off", "reloding_btn_off", "reloding_btn_on");
         // this.reloadBtn.visible = false;
 
@@ -115621,7 +115671,7 @@ class Preloader extends Phaser.State {
 
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -115766,7 +115816,7 @@ class PreloadResource {
 PreloadResource.instance = null;
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -115935,41 +115985,6 @@ class BackgroundEffect extends Phaser.Group {
 
 
 /***/ }),
-/* 24 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__data_GameConfig__ = __webpack_require__(0);
-
-
-class ConfigManager {
-    /**
-     * CONFIG RESET
-     *
-     */
-    GAME_CONFIG_RESET() {
-        __WEBPACK_IMPORTED_MODULE_0__data_GameConfig__["a" /* default */].POP_ENABLED = false;
-        // GameConfig.SOUND_ENABLED = true;
-        __WEBPACK_IMPORTED_MODULE_0__data_GameConfig__["a" /* default */].BGM_ENABLED = true;
-        __WEBPACK_IMPORTED_MODULE_0__data_GameConfig__["a" /* default */].IN_GAME = true;
-        __WEBPACK_IMPORTED_MODULE_0__data_GameConfig__["a" /* default */].TUTORIAL_DISABLED = false;
-        __WEBPACK_IMPORTED_MODULE_0__data_GameConfig__["a" /* default */].GAME_FINISH = false;
-        __WEBPACK_IMPORTED_MODULE_0__data_GameConfig__["a" /* default */].IN_GAME = true;
-        if (__WEBPACK_IMPORTED_MODULE_0__data_GameConfig__["a" /* default */].TIMER_OBJECT.length !== 0) {
-            // GameConfig.TIMER_OBJECT.removeChildren(0, GameConfig.TIMER_OBJECT.length);
-        }
-    }
-
-    GAME_OVER() {
-        __WEBPACK_IMPORTED_MODULE_0__data_GameConfig__["a" /* default */].IN_GAME = false;
-        __WEBPACK_IMPORTED_MODULE_0__data_GameConfig__["a" /* default */].GAME_RESET = true;
-    }
-
-}
-/* harmony export (immutable) */ __webpack_exports__["a"] = ConfigManager;
-
-
-/***/ }),
 /* 25 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -115978,7 +115993,7 @@ class ConfigManager {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__view_ResultView__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__view_Intro__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__const_ResourceKey__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__manager_LoadManager__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__manager_LoadManager__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__MacaroonBakery__ = __webpack_require__(26);
 
 
@@ -116030,7 +116045,7 @@ class Main extends Phaser.State {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__manager_SoundManager__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__manager_SceneManager__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__manager_SceneManager__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__data_AssetKey__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__data_SoundAssetKey__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__data_GameConfig__ = __webpack_require__(0);
@@ -116040,6 +116055,8 @@ class Main extends Phaser.State {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__util_WebEnabledCheck__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__loader_manager_ScreenManager__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__view_ResultView__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__manager_ConfigManager__ = __webpack_require__(12);
+
 
 
 
@@ -116067,8 +116084,6 @@ class MacaroonBakery extends Phaser.Sprite {
 
         if (!this.game.device.desktop && this.game.device.fullScreen) this.game.input.onTap.add(__WEBPACK_IMPORTED_MODULE_9__loader_manager_ScreenManager__["a" /* default */].instance.fullScreen, this);
     }
-
-    preload() {}
 
     _startViewInit(dispatcher) {
 
@@ -116118,12 +116133,19 @@ class MacaroonBakery extends Phaser.Sprite {
         __WEBPACK_IMPORTED_MODULE_0__manager_SoundManager__["a" /* default */].instance.effectSound(__WEBPACK_IMPORTED_MODULE_3__data_SoundAssetKey__["a" /* default */].SFX_MACARON_STAND_BY);
     }
 
-    _update() {
+    update() {
+
+        if (!__WEBPACK_IMPORTED_MODULE_4__data_GameConfig__["a" /* default */].IN_GAME || __WEBPACK_IMPORTED_MODULE_4__data_GameConfig__["a" /* default */].POP_ENABLED) return;
 
         if (this._objectManager) {
             let elapsed = this._game.time.elapsedMS / (500 / this._game.time.desiredFps);
             //if(elapsed > 2) return;
             this._objectManager._update(elapsed);
+        }
+
+        if (__WEBPACK_IMPORTED_MODULE_4__data_GameConfig__["a" /* default */].GAME_FINISH) {
+            __WEBPACK_IMPORTED_MODULE_11__manager_ConfigManager__["a" /* default */].prototype.GAME_OVER();
+            this._gameOver();
         }
     }
 
@@ -116155,7 +116177,7 @@ class MacaroonBakery extends Phaser.Sprite {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__data_GameConfig__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__manager_SoundManager__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__data_SoundAssetKey__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__manager_SceneManager__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__manager_SceneManager__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__util_WebEnabledCheck__ = __webpack_require__(11);
 
 
@@ -116432,7 +116454,7 @@ class TutorialView extends Phaser.Group {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__data_AssetKey__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__data_Constant__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__data_Constant__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__data_GameConfig__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__view_StageView__ = __webpack_require__(30);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__view_object_RightEffect__ = __webpack_require__(33);
@@ -117128,7 +117150,7 @@ class ObjectManager extends Phaser.Group {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__data_Constant__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__data_Constant__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__object_Character__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__data_GameConfig__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__object_WrongEffect__ = __webpack_require__(32);
