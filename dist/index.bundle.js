@@ -978,7 +978,7 @@ class ScreenManager {
             document.addEventListener("MSFullscreenError", function () {/*console.log("Full screen failed");*/
             });
             window.addEventListener("resize", function (evt) {
-                this.changeWinSize();
+                // this.changeWinSize();
             }, false);
             /* let gameScript = document.createElement('script');
              gameScript.setAttribute('src', 'index.bundle.js');
@@ -1920,6 +1920,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__manager_SoundManager__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__loader_manager_LoadManager__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__loader_manager_ScreenManager__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__data_GameConfig__ = __webpack_require__(0);
+
 
 
 
@@ -1929,41 +1931,52 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 class index extends Phaser.Game {
-        constructor(targetElementId, w, h, debug = false, from) {
-                let cfg = {
-                        width: w,
-                        height: h,
-                        renderer: Phaser.AUTO,
-                        parent: targetElementId,
-                        multiTexture: true,
-                        enableDebug: debug
-                };
+    constructor(targetElementId, w, h, debug = false, from) {
+        let cfg = {
+            width: w,
+            height: h,
+            renderer: Phaser.AUTO,
+            parent: targetElementId,
+            multiTexture: true,
+            enableDebug: debug
+        };
 
-                __WEBPACK_IMPORTED_MODULE_3__loader_const_GameInfo__["a" /* default */].GAME_WIDTH = w;
-                __WEBPACK_IMPORTED_MODULE_3__loader_const_GameInfo__["a" /* default */].GAME_HEIGHT = h;
-                __WEBPACK_IMPORTED_MODULE_3__loader_const_GameInfo__["a" /* default */].GAME_DEBUG = debug;
-                __WEBPACK_IMPORTED_MODULE_3__loader_const_GameInfo__["a" /* default */].GAME_RENDER_TYPE = cfg.renderer;
+        __WEBPACK_IMPORTED_MODULE_3__loader_const_GameInfo__["a" /* default */].GAME_WIDTH = w;
+        __WEBPACK_IMPORTED_MODULE_3__loader_const_GameInfo__["a" /* default */].GAME_HEIGHT = h;
+        __WEBPACK_IMPORTED_MODULE_3__loader_const_GameInfo__["a" /* default */].GAME_DEBUG = debug;
+        __WEBPACK_IMPORTED_MODULE_3__loader_const_GameInfo__["a" /* default */].GAME_RENDER_TYPE = cfg.renderer;
 
-                super(cfg);
+        super(cfg);
 
-                new __WEBPACK_IMPORTED_MODULE_4__manager_SoundManager__["a" /* default */](this);
-                new __WEBPACK_IMPORTED_MODULE_5__loader_manager_LoadManager__["a" /* default */](this);
-                let sm = new __WEBPACK_IMPORTED_MODULE_6__loader_manager_ScreenManager__["a" /* default */](this);
-                sm.init();
+        new __WEBPACK_IMPORTED_MODULE_4__manager_SoundManager__["a" /* default */](this);
+        new __WEBPACK_IMPORTED_MODULE_5__loader_manager_LoadManager__["a" /* default */](this);
+        let sm = new __WEBPACK_IMPORTED_MODULE_6__loader_manager_ScreenManager__["a" /* default */](this);
+        sm.init();
 
-                this.state.add('Boot', __WEBPACK_IMPORTED_MODULE_0__loader_state_Boot__["a" /* default */], false);
-                this.state.add('Preloader', __WEBPACK_IMPORTED_MODULE_1__loader_state_Preloader__["a" /* default */], false);
-                this.state.add('Main', __WEBPACK_IMPORTED_MODULE_2__loader_state_Main__["a" /* default */], false);
-                this.state.start('Boot');
-        }
+        this.state.add('Boot', __WEBPACK_IMPORTED_MODULE_0__loader_state_Boot__["a" /* default */], false);
+        this.state.add('Preloader', __WEBPACK_IMPORTED_MODULE_1__loader_state_Preloader__["a" /* default */], false);
+        this.state.add('Main', __WEBPACK_IMPORTED_MODULE_2__loader_state_Main__["a" /* default */], false);
+        this.state.start('Boot');
+    }
 
 }
 /* harmony export (immutable) */ __webpack_exports__["default"] = index;
 
 
+let w, h;
+if (location.href.indexOf('web') !== -1) {
+    w = 720;
+    h = 1280;
+    __WEBPACK_IMPORTED_MODULE_7__data_GameConfig__["a" /* default */].APP_ENBLED = false;
+} else {
+    w = 1280;
+    h = 720;
+    __WEBPACK_IMPORTED_MODULE_7__data_GameConfig__["a" /* default */].APP_ENBLED = true;
+}
+
 window.nts = {};
 // window.nts.index = new index('main_doc', 1280, 720);
-window.nts.index = new index('main_doc', 720, 1280);
+window.nts.index = new index('main_doc', w, h);
 
 /***/ }),
 /* 17 */
@@ -115573,28 +115586,45 @@ class Preloader extends Phaser.State {
         this.bg.x = __WEBPACK_IMPORTED_MODULE_1__const_GameInfo__["a" /* default */].GAME_WIDTH / 2 - this.bg.width / 2;
         this.bg.y = __WEBPACK_IMPORTED_MODULE_1__const_GameInfo__["a" /* default */].GAME_HEIGHT / 2 - this.bg.height / 2;
 
-        //ROW
-        /*  this.loadingCircle = this.game.add.image(490, 210, ResourceKey.PRELOAD_RESOURCE, 'loading_circle');
-          this.preloadBar = this.game.add.sprite(557, 415, ResourceKey.PRELOAD_RESOURCE, 'loading_bar');
-          this.game.load.setPreloadSprite(this.preloadBar);
-            this.loadingJuni = this.game.add.sprite(557, 243, ResourceKey.PRELOAD_RESOURCE, 'loading_juni_piyo_01');
-          // this.loadingJuni.x = (GameInfo.GAME_WIDTH - this.loadingJuni.width)  >> 1;
-          this.loadingJuni.x = GameInfo.GAME_WIDTH/2 - this.loadingJuni.width/2;
+        if (__WEBPACK_IMPORTED_MODULE_5__data_GameConfig__["a" /* default */].APP_ENBLED) {
+            //ROW
+            this.loadingCircle = this.game.add.image(490, 210, __WEBPACK_IMPORTED_MODULE_0__const_ResourceKey__["a" /* default */].PRELOAD_RESOURCE, 'loading_circle');
+            this.preloadBar = this.game.add.sprite(557, 415, __WEBPACK_IMPORTED_MODULE_0__const_ResourceKey__["a" /* default */].PRELOAD_RESOURCE, 'loading_bar');
+            this.game.load.setPreloadSprite(this.preloadBar);
+
+            this.loadingJuni = this.game.add.sprite(557, 243, __WEBPACK_IMPORTED_MODULE_0__const_ResourceKey__["a" /* default */].PRELOAD_RESOURCE, 'loading_juni_piyo_01');
+            // this.loadingJuni.x = (GameInfo.GAME_WIDTH - this.loadingJuni.width)  >> 1;
+            this.loadingJuni.x = __WEBPACK_IMPORTED_MODULE_1__const_GameInfo__["a" /* default */].GAME_WIDTH / 2 - this.loadingJuni.width / 2;
+
             //ERROR IMAGE
-          this.fileErrorImg = this.game.add.image(490, 186, ResourceKey.PRELOAD_RESOURCE, 'reloding_juni');
-          this.networkErrorImg = this.game.add.image(490, 186, ResourceKey.PRELOAD_RESOURCE, 'network_juni');*/
+            this.fileErrorImg = this.game.add.image(490, 186, __WEBPACK_IMPORTED_MODULE_0__const_ResourceKey__["a" /* default */].PRELOAD_RESOURCE, 'reloding_juni');
+            this.networkErrorImg = this.game.add.image(490, 186, __WEBPACK_IMPORTED_MODULE_0__const_ResourceKey__["a" /* default */].PRELOAD_RESOURCE, 'network_juni');
 
-        //COLUMN
-        this.loadingCircle = this.game.add.image(490 - 280, 490, __WEBPACK_IMPORTED_MODULE_0__const_ResourceKey__["a" /* default */].PRELOAD_RESOURCE, 'loading_circle');
-        this.preloadBar = this.game.add.sprite(557 - 280, 490 + 205, __WEBPACK_IMPORTED_MODULE_0__const_ResourceKey__["a" /* default */].PRELOAD_RESOURCE, 'loading_bar');
-        this.game.load.setPreloadSprite(this.preloadBar);
-        this.loadingJuni = this.game.add.sprite(557 - 280, 490 + 33, __WEBPACK_IMPORTED_MODULE_0__const_ResourceKey__["a" /* default */].PRELOAD_RESOURCE, 'loading_juni_piyo_01');
-        // this.loadingJuni.x = (gameInfo.designWidth -this.loadingJuni.width)  >> 1;
-        this.loadingJuni.x = __WEBPACK_IMPORTED_MODULE_1__const_GameInfo__["a" /* default */].GAME_WIDTH / 2 - this.loadingJuni.width / 2;
+            this.bg.angle = -90;
+            this.bg.y = 720;
+            this.loadingCircle.angle = -90;
+            this.preloadBar.angle = -90;
+            this.loadingJuni.angle = -90;
 
-        //ERROR IMAGE
-        this.fileErrorImg = this.game.add.image(490 - 280, 490, __WEBPACK_IMPORTED_MODULE_0__const_ResourceKey__["a" /* default */].PRELOAD_RESOURCE, 'reloding_juni');
-        this.networkErrorImg = this.game.add.image(490 - 280, 490, __WEBPACK_IMPORTED_MODULE_0__const_ResourceKey__["a" /* default */].PRELOAD_RESOURCE, 'network_juni');
+            this.bg.x -= 280;
+            this.loadingCircle.y = 720 - 205;
+            this.preloadBar.x += 138;
+            this.preloadBar.y = 720 - 272;
+            this.loadingJuni.x -= 45;
+            this.loadingJuni.y = 720 - 295;
+        } else {
+            //COLUMN
+            this.loadingCircle = this.game.add.image(490 - 280, 490, __WEBPACK_IMPORTED_MODULE_0__const_ResourceKey__["a" /* default */].PRELOAD_RESOURCE, 'loading_circle');
+            this.preloadBar = this.game.add.sprite(557 - 280, 490 + 205, __WEBPACK_IMPORTED_MODULE_0__const_ResourceKey__["a" /* default */].PRELOAD_RESOURCE, 'loading_bar');
+            this.game.load.setPreloadSprite(this.preloadBar);
+            this.loadingJuni = this.game.add.sprite(557 - 280, 490 + 33, __WEBPACK_IMPORTED_MODULE_0__const_ResourceKey__["a" /* default */].PRELOAD_RESOURCE, 'loading_juni_piyo_01');
+            // this.loadingJuni.x = (gameInfo.designWidth -this.loadingJuni.width)  >> 1;
+            this.loadingJuni.x = __WEBPACK_IMPORTED_MODULE_1__const_GameInfo__["a" /* default */].GAME_WIDTH / 2 - this.loadingJuni.width / 2;
+
+            //ERROR IMAGE
+            this.fileErrorImg = this.game.add.image(490 - 280, 490, __WEBPACK_IMPORTED_MODULE_0__const_ResourceKey__["a" /* default */].PRELOAD_RESOURCE, 'reloding_juni');
+            this.networkErrorImg = this.game.add.image(490 - 280, 490, __WEBPACK_IMPORTED_MODULE_0__const_ResourceKey__["a" /* default */].PRELOAD_RESOURCE, 'network_juni');
+        }
 
         //ANI & ERROR IMAGE
         this.fileErrorImg.visible = false;

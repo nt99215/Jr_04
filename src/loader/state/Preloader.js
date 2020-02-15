@@ -30,32 +30,53 @@ export default class Preloader extends Phaser.State {
         this.bg.x = GameInfo.GAME_WIDTH/2 - this.bg.width/2;
         this.bg.y = GameInfo.GAME_HEIGHT/2 - this.bg.height/2;
 
-        //ROW
-      /*  this.loadingCircle = this.game.add.image(490, 210, ResourceKey.PRELOAD_RESOURCE, 'loading_circle');
-        this.preloadBar = this.game.add.sprite(557, 415, ResourceKey.PRELOAD_RESOURCE, 'loading_bar');
-        this.game.load.setPreloadSprite(this.preloadBar);
+        if(GameConfig.APP_ENBLED)
+        {
+            //ROW
+            this.loadingCircle = this.game.add.image(490, 210, ResourceKey.PRELOAD_RESOURCE, 'loading_circle');
+            this.preloadBar = this.game.add.sprite(557, 415, ResourceKey.PRELOAD_RESOURCE, 'loading_bar');
+            this.game.load.setPreloadSprite(this.preloadBar);
 
-        this.loadingJuni = this.game.add.sprite(557, 243, ResourceKey.PRELOAD_RESOURCE, 'loading_juni_piyo_01');
-        // this.loadingJuni.x = (GameInfo.GAME_WIDTH - this.loadingJuni.width)  >> 1;
-        this.loadingJuni.x = GameInfo.GAME_WIDTH/2 - this.loadingJuni.width/2;
+            this.loadingJuni = this.game.add.sprite(557, 243, ResourceKey.PRELOAD_RESOURCE, 'loading_juni_piyo_01');
+            // this.loadingJuni.x = (GameInfo.GAME_WIDTH - this.loadingJuni.width)  >> 1;
+            this.loadingJuni.x = GameInfo.GAME_WIDTH/2 - this.loadingJuni.width/2;
 
-        //ERROR IMAGE
-        this.fileErrorImg = this.game.add.image(490, 186, ResourceKey.PRELOAD_RESOURCE, 'reloding_juni');
-        this.networkErrorImg = this.game.add.image(490, 186, ResourceKey.PRELOAD_RESOURCE, 'network_juni');*/
+            //ERROR IMAGE
+            this.fileErrorImg = this.game.add.image(490, 186, ResourceKey.PRELOAD_RESOURCE, 'reloding_juni');
+            this.networkErrorImg = this.game.add.image(490, 186, ResourceKey.PRELOAD_RESOURCE, 'network_juni');
+
+            this.bg.angle = -90;
+            this.bg.y = 720;
+            this.loadingCircle.angle = -90;
+            this.preloadBar.angle = -90;
+            this.loadingJuni.angle = -90;
+
+            this.bg.x -= 280;
+            this.loadingCircle.y = 720 - 205;
+            this.preloadBar.x += 138;
+            this.preloadBar.y = 720 - 272;
+            this.loadingJuni.x -=45;
+            this.loadingJuni.y =720 - 295;
+
+        }
+
+        else
+        {
+            //COLUMN
+             this.loadingCircle = this.game.add.image(490 - 280, 490, ResourceKey.PRELOAD_RESOURCE, 'loading_circle');
+             this.preloadBar = this.game.add.sprite(557 - 280, 490 + 205, ResourceKey.PRELOAD_RESOURCE, 'loading_bar');
+             this.game.load.setPreloadSprite(this.preloadBar);
+             this.loadingJuni = this.game.add.sprite(557 - 280, 490 + 33, ResourceKey.PRELOAD_RESOURCE, 'loading_juni_piyo_01');
+             // this.loadingJuni.x = (gameInfo.designWidth -this.loadingJuni.width)  >> 1;
+             this.loadingJuni.x = GameInfo.GAME_WIDTH/2 - this.loadingJuni.width/2;
+
+             //ERROR IMAGE
+             this.fileErrorImg = this.game.add.image(490- 280, 490, ResourceKey.PRELOAD_RESOURCE, 'reloding_juni');
+             this.networkErrorImg = this.game.add.image(490- 280, 490, ResourceKey.PRELOAD_RESOURCE, 'network_juni');
+
+        }
 
 
-
-        //COLUMN
-        this.loadingCircle = this.game.add.image(490 - 280, 490, ResourceKey.PRELOAD_RESOURCE, 'loading_circle');
-        this.preloadBar = this.game.add.sprite(557 - 280, 490 + 205, ResourceKey.PRELOAD_RESOURCE, 'loading_bar');
-        this.game.load.setPreloadSprite(this.preloadBar);
-        this.loadingJuni = this.game.add.sprite(557 - 280, 490 + 33, ResourceKey.PRELOAD_RESOURCE, 'loading_juni_piyo_01');
-        // this.loadingJuni.x = (gameInfo.designWidth -this.loadingJuni.width)  >> 1;
-        this.loadingJuni.x = GameInfo.GAME_WIDTH/2 - this.loadingJuni.width/2;
-
-        //ERROR IMAGE
-        this.fileErrorImg = this.game.add.image(490- 280, 490, ResourceKey.PRELOAD_RESOURCE, 'reloding_juni');
-        this.networkErrorImg = this.game.add.image(490- 280, 490, ResourceKey.PRELOAD_RESOURCE, 'network_juni');
 
 
 

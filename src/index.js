@@ -5,6 +5,7 @@ import GameInfo from "./loader/const/GameInfo";
 import SoundManager from "./manager/SoundManager";
 import LoadManager from "./loader/manager/LoadManager";
 import ScreenManager from "./loader/manager/ScreenManager";
+import GameConfig from "./data/GameConfig";
 
 export default class index extends Phaser.Game {
     constructor(targetElementId, w, h, debug = false, from) {
@@ -41,6 +42,22 @@ export default class index extends Phaser.Game {
 
 }
 
+
+let w,h;
+if(location.href.indexOf('web') !==-1)
+{
+    w= 720;
+    h =1280;
+    GameConfig.APP_ENBLED = false;
+
+}
+else
+{
+    w= 1280;
+    h=720;
+    GameConfig.APP_ENBLED = true;
+}
+
 window.nts = {};
 // window.nts.index = new index('main_doc', 1280, 720);
-window.nts.index = new index('main_doc', 720, 1280);
+window.nts.index = new index('main_doc', w, h);
